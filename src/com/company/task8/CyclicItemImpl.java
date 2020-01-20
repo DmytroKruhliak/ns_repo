@@ -66,8 +66,10 @@ public class CyclicItemImpl implements CyclicItem {
             return false;
         CyclicItemImpl other = (CyclicItemImpl) obj;
         if (value == null) {
-            return other.value == null;
-        } else return value.equals(other.value);
+            if (other.value != null)
+                return false;
+        } else if (!value.equals(other.value))
+            return false;
+        return true;
     }
-
 }

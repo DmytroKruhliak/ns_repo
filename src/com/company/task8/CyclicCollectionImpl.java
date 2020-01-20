@@ -79,16 +79,18 @@ public class CyclicCollectionImpl implements CyclicCollection, Serializable {
     public boolean remove(CyclicItem item) {
         if (item == null) {
             throw new NullPointerException();
-        } if (!containsItem(item)) {
+        }
+        if (!containsItem(item)) {
             return false;
         }
         if (item.equals(head)) {
             removeHead();
-        }else if (item.equals(tail)) {
+        } else if (item.equals(tail)) {
             removeTail();
         } else {
             removeAfter(item);
         }
+        size--;
         return false;
     }
 
